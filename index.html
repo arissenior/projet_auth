@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureAuth | Système d'Authentification Intelligent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Animation de fond -->
+    <div class="background-animation" id="background-animation"></div>
+    
+    <div class="container">
+        <div class="welcome-section">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>SecureAuth</span>
+            </div>
+            
+            <div class="welcome-content">
+                <h1>Sécurité Intelligente & Authentification Avancée</h1>
+                <p>Notre système d'authentification innovant protège votre compte avec les dernières technologies de sécurité.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-fingerprint"></i>
+                        <div class="feature-text">
+                            <h3>Authentification Biométrique</h3>
+                            <p>Utilisez votre empreinte digitale ou reconnaissance faciale</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-check"></i>
+                        <div class="feature-text">
+                            <h3>Protection Avancée</h3>
+                            <p>Détection d'intrusion et prévention des attaques</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <div class="feature-text">
+                            <h3>Connexion Rapide</h3>
+                            <p>Accédez à votre compte en quelques secondes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Accédez à votre compte</h2>
+                    <p>Entrez vos identifiants pour vous connecter</p>
+                </div>
+                
+                <div class="form-tabs">
+                    <div class="tab-indicator" id="tab-indicator"></div>
+                    <div class="form-tab active" id="login-tab">Connexion</div>
+                    <div class="form-tab" id="register-tab">Inscription</div>
+                </div>
+                
+                <!-- Messages d'alerte -->
+                <div class="alert alert-success" id="success-alert" style="display: none;">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="success-message"></span>
+                </div>
+                
+                <div class="alert alert-error" id="error-alert" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="error-message"></span>
+                </div>
+                
+                <!-- Formulaire de connexion -->
+                <form class="form active" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email ou nom d'utilisateur</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="login-email" name="email" placeholder="Entrez votre email ou nom d'utilisateur" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Mot de passe</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="login-password" name="password" placeholder="Entrez votre mot de passe" required>
+                            <i class="fas fa-eye password-toggle" id="login-password-toggle"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember-me" name="remember">
+                            <label for="remember-me">Se souvenir de moi</label>
+                        </div>
+                        <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn" id="login-btn">
+                        <span class="btn-text">Se connecter</span>
+                    </button>
+                    
+                    <div class="biometric-option" id="biometric-login">
+                        <i class="fas fa-fingerprint"></i>
+                        <span>Se connecter avec l'empreinte digitale</span>
+                    </div>
+                    
+                    <div class="divider">Ou continuer avec</div>
+                    
+                    <div class="social-login">
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button type="button" class="social-btn apple">
+                            <i class="fab fa-apple"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="security-indicator">
+                        <i class="fas fa-shield-check"></i>
+                        <span>Connexion sécurisée avec chiffrement de bout en bout</span>
+                    </div>
+                    
+                    <div class="form-footer">
+                        Pas encore de compte ? <a href="#" id="switch-to-register">S'inscrire</a>
+                    </div>
+                </form>
+                
+                <!-- Formulaire d'inscription -->
+                <form class="form" id="register-form">
+                    <div class="progress-steps">
+                        <div class="progress-step active" id="step-1">1</div>
+                        <div class="progress-step" id="step-2">2</div>
+                        <div class="progress-step" id="step-3">3</div>
+                    </div>
+                    
+                    <div class="form-step" id="form-step-1">
+                        <div class="form-group">
+                            <label for="register-username">Nom d'utilisateur</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="register-username" name="username" placeholder="Choisissez un nom d'utilisateur" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-email">Adresse email</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="register-email" name="email" placeholder="Entrez votre adresse email" required>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn" id="next-step-1">
+                            <span class="btn-text">Continuer</span>
+                        </button>
+                    </div>
+                    
+                    <div class="form-step" id="form-step-2" style="display: none;">
+                        <div class="form-group">
+                            <label for="register-password">Mot de passe</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="register-password" name="password" placeholder="Créez un mot de passe sécurisé" required>
+                                <i class="fas fa-eye password-toggle" id="register-password-toggle"></i>
+                            </div>
+                            <div class="password-strength">
+                                <div class="password-strength-bar" id="password-strength-bar"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm-password">Confirmer le mot de passe</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirmez votre mot de passe" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <button type="button" class="btn btn-outline" id="prev-step-2">
+                                <span class="btn-text">Retour</span>
+                            </button>
+                            <button type="button" class="btn" id="next-step-2">
+                                <span class="btn-text">Continuer</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-step" id="form-step-3" style="display: none;">
+                        <div class="terms">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">J'accepte les <a href="#">conditions d'utilisation</a> et la <a href="#">politique de confidentialité</a></label>
+                        </div>
+                        
+                        <div class="terms">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Je souhaite recevoir des actualités et des offres exclusives</label>
+                        </div>
+                        
+                        <div class="biometric-option">
+                            <i class="fas fa-fingerprint"></i>
+                            <span>Activer l'authentification biométrique pour ce compte</span>
+                        </div>
+                        
+                        <div class="form-options">
+                            <button type="button" class="btn btn-outline" id="prev-step-3">
+                                <span class="btn-text">Retour</span>
+                            </button>
+                            <button type="submit" class="btn" id="register-btn">
+                                <span class="btn-text">Créer mon compte</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-footer">
+                        Déjà un compte ? <a href="#" id="switch-to-login">Se connecter</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
